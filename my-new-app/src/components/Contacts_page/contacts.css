@@ -1,0 +1,95 @@
+.question {
+	text-align: center;
+}
+
+.head-contacts {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	margin-top: 80px;
+}
+
+.head-thanks-contacts {
+	height: 357px;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	margin-top: 80px;
+}
+
+.block-area-1-contacts {
+	display: flex;
+	justify-content: space-around;
+	margin-top: 100px;
+	margin-right: 150px;
+	margin-bottom: 150px;
+}
+
+.my-form {
+	margin-top: 30px;
+}
+
+.my-form form {
+	font-size: 24px;
+	display: flex;
+	flex-direction: column;
+	padding-left: 600px;
+}
+
+
+.input-button{
+	background-color: rgb(190, 190, 190);
+	width: 235px;
+	height: 30px;
+	border-radius: 4px;
+	color: white;
+	text-align: center;
+	padding-top: 3px;
+	margin-top: 10px;
+	margin-left: 20px;
+}
+.input-button span{
+	color:  yellow;
+}
+
+.input-name input {
+	height: 30px;
+	width: 130px;
+}
+
+.input-age input {
+	height: 30px;
+	width: 50px;
+}
+
+@media screen and (max-width: 940px) {
+	.block-area-1-contacts {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		margin: 0;
+	}
+
+	.block-1-contacts,
+	.block-2-contacts,
+	.block-3-contacts {
+		padding-top: 50px;
+		display: table;
+		margin: 0 auto;
+	}
+
+	.list-block-1,
+	.list-block-2,
+	.list-block-3,
+	.list-block-4 {
+		text-align: center;
+	}
+}
+
+@media screen and (max-width: 1000px) {
+
+	.element-block-3,
+	.element-block-4 {
+		min-width: 0;
+	}
+}
