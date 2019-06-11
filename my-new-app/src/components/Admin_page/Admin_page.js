@@ -16,6 +16,7 @@ class Admin_page extends React.Component{
     }
     render(){
         return(
+            
             <React.Fragment>
                 {this.state.comments.map( comments =>
                     <div className="ans-block" key={comments._id}> 

@@ -8,7 +8,9 @@ class Posts_page extends React.Component{
         super();
         this.state = {
             posts: [],
-            search: ''
+            search: '',
+            draw: false,
+            tags: []
         }
     }
     updateSearch(event){
@@ -17,27 +19,35 @@ class Posts_page extends React.Component{
     componentDidMount() {
         fetch('/posts')
             .then(res => res.json())
-            .then(posts => this.setState({posts}));
+            .then(posts => this.setState({posts: posts, draw: true}))
     }
+
     render(){
+        const flag = this.state.draw;
+        
+        // if(flag){
+        //     let splited = this.state.post.tag.split(',');
+        //     console.log(splited);
+        //  }
         let m_posts = this.state.posts.filter(
             (posts) => {
                 return posts.tag.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
             }
         );
+
+
         return(
             <React.Fragment>
-                {/* <Header/> */}
                 <div className="post-title">
                     <h1>Выберите интересующий вас пост!</h1>
                 </div>
-                <input value={this.state.search} onChange={this.updateSearch.bind(this)}></input>
+                <input className="search-input" value={this.state.search} onChange={this.updateSearch.bind(this)} placeholder="Поиск по тэгам"></input>
                 <div className="post-container">
                     {m_posts.map( posts =>
                         <Link key={posts._id} className="single-ref" to={"/post/"+posts._id}>{posts.title}<br/></Link>
                     )}
+
                 </div>
-                {/* <Footer/> */}
             </React.Fragment>
         )
     }

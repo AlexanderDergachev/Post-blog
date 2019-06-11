@@ -25,6 +25,7 @@ const postDataSchema = new Schema({
   title: String,
   text: String,
   tag: String,
+  tags: Array,
   filename: String
 }, {collection: 'posts'});
 
@@ -70,6 +71,7 @@ app.post('/create-post', upload.single('file'), (req, res, next) =>{
     title: req.body.title,
     text: req.body.text,
     tag: req.body.tag,
+    tags: JSON.parse(req.body.tags),
     filename: req.file.filename
   };
 

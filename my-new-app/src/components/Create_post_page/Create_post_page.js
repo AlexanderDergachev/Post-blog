@@ -7,11 +7,13 @@ class Create_post_page extends React.Component{
         const title = document.getElementById('post_title').value;
         const text = document.getElementById('post_text').value;
         let tag = document.getElementById('post_tag').value;
+        let tags = JSON.stringify(document.getElementById('post_tag').value.split(','));
         const file = document.getElementById('post_image').files[0];
         var data = new FormData();
         data.append('title', title);
         data.append('text', text);
         data.append('tag', tag);
+        data.append('tags', tags);
         data.append('file', file);
         
         fetch('/create-post', {
@@ -36,7 +38,7 @@ class Create_post_page extends React.Component{
                 </div>
                 <div className="head-block-1">
                     <input className="input-title" type="text" id="post_title" placeholder="Введите заголовок" maxLength="110"></input><br/>
-                    <input type="text" id="post_tag" placeholder="Тэг" maxLength='11'></input><br/>
+                    <input type="text" id="post_tag" placeholder="Тэг"></input><br/>
                     <textarea className="input-textarea" id="post_text" type="text" placeholder="Введите что-нибудь крутое"></textarea>
                     <input className="input-file" type="file" id="post_image"></input>
                     <span id="button_create_post" className="create-post-input-button" onClick={this.sendPost}>Отправить</span>

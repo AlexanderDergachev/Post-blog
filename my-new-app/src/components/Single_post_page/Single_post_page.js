@@ -3,16 +3,17 @@ import {Link} from 'react-router-dom';
 
 
 class Single_post_page extends React.Component{
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
-            post: []
+            post: [],
+            draw: false
         }
     }
     componentDidMount() {
         fetch('/post/'+this.props.match.params.id)
             .then(res => res.json())
-            .then(post => this.setState({post}));
+            .then(post => this.setState({post: post, draw: true}));
     }
 
     // componentWillMount() {
@@ -25,13 +26,17 @@ class Single_post_page extends React.Component{
     //     request();
         
     // }
-    test(str){
-        return str.split(',');
-    }
+
     render(){
-         this.test.bind(this.state.post.tag);
-         console.log(this.state.post.tag);
-         
+         const flag = this.state.draw;
+         let myimg = null;
+         if(flag){
+             myimg = <img src={'/images/'+this.state.post.filename}  width="400" height="450"/>
+         }
+         if(flag){
+            let splited = this.state.post.tag.split(',');
+            console.log(splited);
+         }
         return(
             <React.Fragment>
                 <div className="delete-post-tot">
@@ -44,9 +49,10 @@ class Single_post_page extends React.Component{
                     <div className="single-post-text">
                         {this.state.post.text}
                     </div>
-                    <div className="single-post-image">
-                        <img src={"/images/"+this.state.post.filename} alt={this.state.post.filename} width="400" height="450"/>
-                    </div>
+                    {/* <div className="single-post-image">
+                        <img src={'/images/'+this.state.filename}  width="400" height="450"/>
+                    </div> */}
+                    {myimg}
                 </div>
             </React.Fragment>
         )

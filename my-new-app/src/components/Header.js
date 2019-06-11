@@ -31,7 +31,7 @@ class Header extends React.Component{
               <nav>
                 <div className="my-nav" id="myNav">
                   <Link to="/posts">Посты</Link>
-                  <Link to="/cloud">Облако</Link>
+                  <Link to="/">Возможности</Link>
                   <a href="/">Ресурсы</a>
                   <a href="/">Тарифные планы и цены</a>
                   <Link to="/register">Регистрация</Link>
